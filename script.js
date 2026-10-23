@@ -6,7 +6,8 @@ const diapositivas = [
     document.getElementById("diapositiva4"),
     document.getElementById("diapositiva5"),
     document.getElementById("diapositiva6"),
-    document.getElementById("diapositiva7")
+    document.getElementById("diapositiva7"),
+    document.getElementById("diapositiva8")
 ];
 
 const botonSiguiente = document.getElementById("siguiente");
@@ -65,9 +66,9 @@ function mostrarDiapositiva(indice) {
     if (indice === 4) {
         animarMetodologia();
     }
-    // Animar los números al entrar en la diapositiva 3
+   // Animar los números al entrar en la diapositiva 3
         if (indice === 2) {
-    animarContadores();
+        animarContadores();
     }
 }
 

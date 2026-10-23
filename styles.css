@@ -731,7 +731,7 @@ h2 {
 
 
 /* Cierre institucional: diapositiva 7 */
-#diapositiva7 .portada-contenido {
+#diapositiva8 .portada-contenido {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -753,7 +753,7 @@ h2 {
 }
 
 /* Línea decorativa superior */
-#diapositiva7 .portada-contenido::before {
+#diapositiva8 .portada-contenido::before {
     content: "";
     position: absolute;
     top: -1px;
@@ -771,19 +771,19 @@ h2 {
 }
 
 /* Texto del cierre */
-#diapositiva7 .portada-texto {
+#diapositiva8 .portada-texto {
     flex: 1 1 60%;
     text-align: left;
 }
 
-#diapositiva7 .portada-texto h1 {
+#diapositiva8 .portada-texto h1 {
     font-size: clamp(2rem, 4vw, 3.5rem);
     line-height: 1.1;
     margin-bottom: 22px;
     letter-spacing: 2px;
 }
 
-#diapositiva7 .portada-texto p {
+#diapositiva8 .portada-texto p {
     font-size: 0.95rem;
     line-height: 1.6;
     letter-spacing: 1px;
@@ -791,14 +791,14 @@ h2 {
 }
 
 /* Escudo institucional */
-#diapositiva7 .portada-imagen {
+#diapositiva8 .portada-imagen {
     flex: 0 0 30%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#diapositiva7 .portada-imagen img {
+#diapositiva8 .portada-imagen img {
     display: block;
     width: 100%;
     max-width: 220px;
@@ -809,7 +809,7 @@ h2 {
 
 /* Adaptación a pantallas pequeñas */
 @media (max-width: 700px) {
-    #diapositiva7 .portada-contenido {
+    #diapositiva8 .portada-contenido {
         width: 92%;
         min-height: auto;
         margin-top: 25px;
@@ -817,27 +817,27 @@ h2 {
         gap: 15px;
     }
 
-    #diapositiva7 .portada-imagen img {
+    #diapositiva8 .portada-imagen img {
         max-width: 130px;
         max-height: 170px;
     }
 
-    #diapositiva7 .portada-texto h1 {
+    #diapositiva8 .portada-texto h1 {
         font-size: 1.7rem;
     }
 
-    #diapositiva7 .portada-texto p {
+    #diapositiva8 .portada-texto p {
         font-size: 0.75rem;
     }
 }
 
 /* Efecto animado del escudo en la diapositiva final */
-#diapositiva7 .portada-imagen {
+#diapositiva8 .portada-imagen {
     position: relative;
     isolation: isolate;
 }
 
-#diapositiva7 .circulos-fondo {
+#diapositiva8 .circulos-fondo {
     position: absolute;
     inset: 0;
     display: flex;
@@ -847,7 +847,7 @@ h2 {
     pointer-events: none;
 }
 
-#diapositiva7 .circulos-fondo span {
+#diapositiva8 .circulos-fondo span {
     position: absolute;
     width: 180px;
     height: 180px;
@@ -856,15 +856,15 @@ h2 {
     animation: circulosCierre 6s ease-out infinite;
 }
 
-#diapositiva7 .circulos-fondo span:nth-child(2) {
+#diapositiva8 .circulos-fondo span:nth-child(2) {
     animation-delay: 2s;
 }
 
-#diapositiva7 .circulos-fondo span:nth-child(3) {
+#diapositiva8 .circulos-fondo span:nth-child(3) {
     animation-delay: 4s;
 }
 
-#diapositiva7 .portada-imagen img {
+#diapositiva8 .portada-imagen img {
     position: relative;
     z-index: 1;
 }
@@ -1137,6 +1137,307 @@ img {
         width: 100%;
         height: auto;
         object-fit: contain;
+    }
+}
+
+/* CORRECCIÓN: DIAPOSITIVA DEL INCIDENTE */
+#diapositiva7.activa {
+    display: flex;
+    flex-direction: column;
+}
+
+/* CORRECCIÓN: CIERRE INSTITUCIONAL */
+#diapositiva8 .portada-contenido {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    width: 82%;
+    max-width: 1050px;
+    min-height: 380px;
+    margin: 55px auto 0;
+    padding: 40px 50px;
+    border: 1px solid rgba(91, 190, 255, 0.65);
+    border-radius: 12px;
+    box-sizing: border-box;
+    position: relative;
+    background: rgba(255, 255, 255, 0.025);
+    box-shadow: 0 0 25px rgba(35, 145, 220, 0.08);
+}
+
+#diapositiva8 .portada-texto {
+    flex: 1 1 60%;
+    text-align: left;
+}
+
+#diapositiva8 .portada-imagen {
+    flex: 0 0 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    isolation: isolate;
+}
+
+#diapositiva8 .portada-imagen img {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    max-height: 250px;
+    height: auto;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+}
+
+#diapositiva8 .circulos-fondo {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@media (max-width: 700px) {
+    #diapositiva8 .portada-contenido {
+        flex-direction: column;
+        width: 92%;
+        min-height: auto;
+        margin-top: 25px;
+        padding: 28px 20px;
+        gap: 20px;
+    }
+
+    #diapositiva8 .portada-texto {
+        width: 100%;
+        text-align: center;
+    }
+
+    #diapositiva8 .portada-texto h1 {
+        font-size: 1.7rem;
+    }
+
+    #diapositiva8 .portada-imagen {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 220px;
+        margin: 0 auto;
+    }
+
+    #diapositiva8 .portada-imagen img {
+        max-width: 160px;
+        max-height: 180px;
+    }
+}
+
+/* ==========================================
+   DIAPOSITIVA 7 - ¿QUÉ ES UN INCIDENTE?
+   ========================================== */
+
+#diapositiva7.incidente {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 14px;
+    padding: 22px 4%;
+    overflow-y: auto;
+    color: #edf7ff;
+}
+
+/* ENCABEZADO */
+#diapositiva7 .incidente-encabezado {
+    width: 100%;
+    text-align: center;
+}
+
+#diapositiva7 .incidente-encabezado h1 {
+    margin: 0 0 12px;
+    color: #65d9ff;
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    letter-spacing: 2px;
+    text-shadow: 0 0 18px rgba(77, 184, 255, 0.18);
+}
+
+#diapositiva7 .incidente-datos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 28px;
+}
+
+#diapositiva7 .incidente-datos p {
+    margin: 0;
+    padding: 9px 14px;
+    border: 1px solid rgba(101, 217, 255, 0.3);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.035);
+    font-size: 0.92rem;
+}
+
+#diapositiva7 .incidente-datos strong {
+    color: #65d9ff;
+}
+
+/* MAPA CENTRAL */
+#diapositiva7 .incidente-mapa {
+    width: 100%;
+    max-width: 760px;
+    height: clamp(150px, 25vh, 240px);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid rgba(101, 217, 255, 0.55);
+    border-radius: 12px;
+    background: rgba(7, 20, 38, 0.8);
+    box-shadow: 0 0 22px rgba(35, 145, 220, 0.1);
+}
+
+#diapositiva7 .incidente-mapa img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* CIRCUITO */
+#diapositiva7 .incidente-circuito {
+    width: 100%;
+}
+
+#diapositiva7 .incidente-circuito h2,
+#diapositiva7 .incidente-conclusion h2 {
+    margin: 0 0 10px;
+    color: #65d9ff;
+    font-size: 1.05rem;
+    letter-spacing: 1.3px;
+}
+
+#diapositiva7 .incidente-circuito h2 {
+    text-align: center;
+}
+
+#diapositiva7 .incidente-etapas {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+}
+
+#diapositiva7 .incidente-etapa {
+    min-width: 0;
+    padding: 12px 10px;
+    border: 1px solid rgba(101, 217, 255, 0.32);
+    border-radius: 10px;
+    background: linear-gradient(
+        145deg,
+        rgba(24, 66, 96, 0.55),
+        rgba(11, 29, 51, 0.75)
+    );
+    text-align: center;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+#diapositiva7 .incidente-etapa:hover {
+    border-color: #65d9ff;
+    transform: translateY(-3px);
+}
+
+#diapositiva7 .incidente-etapa span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 8px;
+    border: 1px solid rgba(101, 217, 255, 0.6);
+    border-radius: 50%;
+    background: #123e5c;
+    color: #65d9ff;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+#diapositiva7 .incidente-etapa h3 {
+    margin: 0 0 7px;
+    color: #ffffff;
+    font-size: 0.92rem;
+}
+
+#diapositiva7 .incidente-etapa p {
+    margin: 0;
+    color: #d5e2ed;
+    font-size: 0.78rem;
+    line-height: 1.4;
+}
+
+/* CONCLUSIÓN */
+#diapositiva7 .incidente-conclusion {
+    width: 100%;
+    padding: 12px 16px;
+    border-left: 3px solid #65d9ff;
+    border-radius: 6px;
+    background: rgba(35, 145, 220, 0.1);
+}
+
+#diapositiva7 .incidente-conclusion p {
+    margin: 0;
+    color: #e2edf5;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+/* TABLETS Y NETBOOKS */
+@media (max-width: 900px) {
+    #diapositiva7.incidente {
+        gap: 12px;
+        padding: 20px 3%;
+    }
+
+    #diapositiva7 .incidente-etapas {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* CELULARES */
+@media (max-width: 600px) {
+    #diapositiva7.incidente {
+        padding: 22px 16px;
+        gap: 16px;
+    }
+
+    #diapositiva7 .incidente-datos {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    #diapositiva7 .incidente-mapa {
+        height: 220px;
+    }
+
+    #diapositiva7 .incidente-etapas {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #diapositiva7 .incidente-etapa {
+        display: grid;
+        grid-template-columns: 38px minmax(0, 1fr);
+        column-gap: 10px;
+        text-align: left;
+    }
+
+    #diapositiva7 .incidente-etapa span {
+        grid-row: span 2;
+        margin: 0;
+    }
+
+    #diapositiva7 .incidente-etapa h3 {
+        align-self: end;
+    }
+
+    #diapositiva7 .incidente-etapa p {
+        grid-column: 2;
     }
 }
 

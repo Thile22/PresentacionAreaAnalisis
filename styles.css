@@ -458,42 +458,12 @@ h2 {
 }
 
 
-/* GIRO 3D DE LOS NUMEROS */
+/* CONTADOR DE BARRIOS: SIN GIRO 3D */
 #diapositiva3.activa .zona-card strong {
     display: block;
-    transform-style: preserve-3d;
-    backface-visibility: visible;
-    animation: giroNumero 1.5s ease-in-out both;
-}
-
-
-@keyframes giroNumero {
-    0% {
-        opacity: 0;
-        transform: perspective(300px) rotateX(0deg) scale(0.6);
-    }
-
-    20% {
-        opacity: 1;
-        transform: perspective(300px) rotateX(360deg) scale(1.15);
-    }
-
-    40% {
-        transform: perspective(300px) rotateX(720deg) scale(0.9);
-    }
-
-    60% {
-        transform: perspective(300px) rotateX(1080deg) scale(1.1);
-    }
-
-    80% {
-        transform: perspective(300px) rotateX(1260deg) scale(0.95);
-    }
-
-    100% {
-        opacity: 1;
-        transform: perspective(300px) rotateX(2880deg) scale(1);
-    }
+    transform: none;
+    animation: none;
+    opacity: 1;
 }
 
 /* DIAPOSITIVA 4 - FUENTES DE INFORMACION */
@@ -914,6 +884,263 @@ h2 {
         opacity: 0;
     }
 }
+
+/* ===== ADAPTACIÓN A NETBOOK Y CELULAR ===== */
+
+/* Evita desbordamientos y calcula mejor los tamaños */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Las imágenes nunca deben salirse de su espacio */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tablets y pantallas medianas */
+@media (max-width: 900px) {
+  .diapositiva {
+    padding: 32px 24px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+  .diapositiva {
+    padding: 24px 18px;
+  }
+
+  .diapositiva h1 {
+    font-size: clamp(1.7rem, 7vw, 2.5rem);
+    line-height: 1.15;
+    overflow-wrap: break-word;
+  }
+
+  .diapositiva h2 {
+    font-size: clamp(1.25rem, 5vw, 1.8rem);
+    line-height: 1.25;
+  }
+
+  .diapositiva p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* ===== PORTADA RESPONSIVE ===== */
+
+/* Evita que el contenido y el emblema se desborden */
+.presentacion {
+    width: 100%;
+    max-width: 100%;
+}
+
+.portada {
+    min-width: 0;
+}
+
+.contenido,
+.zona-emblema {
+    min-width: 0;
+}
+
+.emblema {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Celulares y pantallas angostas */
+@media (max-width: 600px) {
+    .portada {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 28px;
+    }
+
+    .contenido {
+        width: 100%;
+    }
+
+    .zona-emblema {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .emblema {
+        width: min(62vw, 230px);
+        max-height: 230px;
+    }
+
+    .circulo-externo {
+        max-width: 75vw;
+    }
+
+    .datos {
+        width: 100%;
+    }
+
+    .dato {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .encabezado p {
+        font-size: clamp(0.65rem, 2.8vw, 0.85rem);
+        line-height: 1.4;
+    }
+}
+
+/* ===== ADAPTACIÓN DE DIAPOSITIVAS 2 A 7 ===== */
+
+.contenido-secundario {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.descripcion,
+.texto-secundario,
+.total-barrios,
+.etapa-texto p,
+.analisis-card p,
+.fuente-card p {
+    overflow-wrap: anywhere;
+}
+
+/* Tablets y netbooks pequeñas */
+@media (max-width: 900px) {
+    .contenido-secundario {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .zonas-grid,
+    .fuentes-grid,
+    .analisis-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .metodologia-lista {
+        width: 100%;
+    }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+    .contenido-secundario {
+        width: 100%;
+        padding: 24px 18px;
+    }
+
+    .contenido-secundario h1 {
+        font-size: clamp(1.5rem, 7vw, 2.1rem);
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+    }
+
+    .contenido-secundario h2 {
+        font-size: clamp(1rem, 4.5vw, 1.3rem);
+        line-height: 1.3;
+    }
+
+    .descripcion {
+        font-size: 0.95rem;
+        line-height: 1.55;
+    }
+
+    .zonas-grid,
+    .fuentes-grid,
+    .analisis-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .zona-card,
+    .fuente-card,
+    .analisis-card {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .metodologia-lista {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .metodologia-etapa {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .etapa-texto {
+        min-width: 0;
+    }
+
+    /* Diapositiva final */
+    .portada-contenido {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        width: 100%;
+    }
+
+    .portada-texto {
+        width: 100%;
+        text-align: center;
+    }
+
+    .portada-texto h1 {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+    }
+
+    .portada-texto p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .portada-imagen {
+        width: 100%;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    .portada-imagen img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+
 
 
 

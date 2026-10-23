@@ -111,32 +111,39 @@
 
             <div class="zona-card">
                 <span>ZONA NORTE</span>
-                <strong>60</strong>
+                <strong class="contador" data-objetivo="60">0</strong>
                 <p>Barrios</p>
             </div>
 
             <div class="zona-card">
                 <span>ZONA ESTE</span>
-                <strong>50</strong>
+                <strong class="contador" data-objetivo="50">0</strong>
                 <p>Barrios</p>
             </div>
 
             <div class="zona-card">
-                <span>CENTRO Y OESTE</span>
-                <strong>72</strong>
+                <span>CENTRO</span>
+                <strong class="contador" data-objetivo="30">0</strong>
+                <p>Barrios</p>
+            </div>
+
+             <div class="zona-card">
+                <span>OESTE</span>
+                <strong class="contador" data-objetivo="42">0</strong>
                 <p>Barrios</p>
             </div>
 
             <div class="zona-card">
                 <span>ZONA SUR</span>
-                <strong>52</strong>
+                <strong class="contador" data-objetivo="52">0</strong>
                 <p>Barrios</p>
             </div>
 
         </div>
 
         <p class="total-barrios">
-            COBERTURA TOTAL · 234 BARRIOS
+             COBERTURA TOTAL ·
+    <span class="contador" data-objetivo="234">0</span> BARRIOS
         </p>
 
     </section>
@@ -319,13 +326,23 @@
 
             <p class="numero-diapositiva">01 / 04</p>
 
-            <button
-                class="flecha"
-                id="siguiente"
-                aria-label="Avanzar a la próxima diapositiva"
-            >
-                →
-            </button>
+           <button
+    class="flecha"
+    id="anterior"
+    aria-label="Volver a la diapositiva anterior"
+>
+    ←
+</button>
+
+<p class="numero-diapositiva">01 / 07</p>
+
+<button
+    class="flecha"
+    id="siguiente"
+    aria-label="Avanzar a la próxima diapositiva"
+>
+    →
+</button>
 
         </footer>
 

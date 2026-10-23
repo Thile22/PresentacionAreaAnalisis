@@ -10,6 +10,7 @@ const diapositivas = [
 ];
 
 const botonSiguiente = document.getElementById("siguiente");
+const botonAnterior = document.getElementById("anterior");
 const numeroDiapositiva = document.querySelector(".numero-diapositiva");
 const indicadores = document.querySelectorAll(".progreso span");
 
@@ -64,6 +65,10 @@ function mostrarDiapositiva(indice) {
     if (indice === 4) {
         animarMetodologia();
     }
+    // Animar los números al entrar en la diapositiva 3
+        if (indice === 2) {
+    animarContadores();
+    }
 }
 
 // Mostrar las cuatro etapas de metodología progresivamente
@@ -108,8 +113,9 @@ function retroceder() {
     }
 }
 
-// Botón de navegación
+// Botones de navegación
 botonSiguiente.addEventListener("click", avanzar);
+botonAnterior.addEventListener("click", retroceder);
 
 // Navegación con el teclado
 document.addEventListener("keydown", function (evento) {
@@ -125,3 +131,46 @@ document.addEventListener("keydown", function (evento) {
 
 // Iniciar en la portada
 mostrarDiapositiva(0);
+
+/* ===== CONTADOR ANIMADO DE BARRIOS ===== */
+
+function animarContadores() {
+    const contadores = document.querySelectorAll(
+        "#diapositiva3 .contador"
+    );
+
+    contadores.forEach((contador) => {
+        const objetivo = Number(contador.dataset.objetivo);
+
+        // Reiniciamos el número antes de comenzar
+        contador.textContent = "0";
+
+        const duracion = 1500;
+        const inicio = performance.now();
+
+        function actualizar(tiempoActual) {
+            const progreso = Math.min(
+                (tiempoActual - inicio) / duracion,
+                1
+            );
+
+            // Suaviza el movimiento al llegar al número final
+            const progresoSuave = 1 - Math.pow(1 - progreso, 3);
+
+            const valorActual = Math.floor(
+                objetivo * progresoSuave
+            );
+
+            contador.textContent = valorActual;
+
+            if (progreso < 1) {
+                requestAnimationFrame(actualizar);
+            } else {
+                contador.textContent = objetivo;
+            }
+        }
+
+        requestAnimationFrame(actualizar);
+    });
+}
+

@@ -1,0 +1,923 @@
+
+/* 1. Configuración general */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Aptos, "Segoe UI", sans-serif;
+    background: #050d19;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* 2. Estructura principal */
+.presentacion {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(0, 115, 190, 0.20),
+            transparent 35%
+        ),
+        linear-gradient(135deg, #071426, #030914 75%);
+}
+
+/* 3. Líneas decorativas del fondo */
+.presentacion::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.13;
+    background-image:
+        linear-gradient(
+            rgba(90, 180, 255, 0.18) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(90, 180, 255, 0.18) 1px,
+            transparent 1px
+        );
+    background-size: 45px 45px;
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black
+    );
+}
+
+/* 4. Encabezado */
+.encabezado {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 30px 6%;
+    border-bottom: 1px solid rgba(100, 190, 255, 0.18);
+}
+
+.encabezado p {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #d9eaff;
+}
+
+.linea-celeste {
+    width: 34px;
+    height: 3px;
+    background: #36c5ff;
+    box-shadow: 0 0 12px #36c5ff;
+}
+
+/* 5. Contenido de la portada */
+.portada {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 30px;
+    padding: 45px 8%;
+}
+
+.contenido {
+    animation: aparecer 1s ease both;
+}
+
+.categoria {
+    color: #36c5ff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(30px, 4.2vw, 62px);
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    font-weight: 750;
+    max-width: 800px;
+}
+
+h2 {
+    margin-top: 24px;
+    color: #9dc9ed;
+    font-size: clamp(18px, 2vw, 26px);
+    font-weight: 400;
+}
+
+/* 6. Datos institucionales */
+.datos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 48px;
+}
+
+.dato {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding-left: 14px;
+    border-left: 2px solid #36c5ff;
+}
+
+.icono {
+    color: #36c5ff;
+    font-size: 25px;
+}
+
+.dato p {
+    color: #86a6c4;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.dato strong {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 7. Zona del emblema */
+.zona-emblema {
+    position: relative;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circulo-externo {
+    position: absolute;
+    width: min(340px, 90%);
+    aspect-ratio: 1;
+    border: 1px solid rgba(54, 197, 255, 0.35);
+    border-radius: 50%;
+    box-shadow:
+        0 0 45px rgba(0, 145, 255, 0.12),
+        inset 0 0 45px rgba(0, 145, 255, 0.08);
+}
+
+.circulo-externo::before,
+.circulo-externo::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(54, 197, 255, 0.18);
+    border-radius: 50%;
+}
+
+.circulo-externo::before {
+    inset: 18px;
+}
+
+.circulo-externo::after {
+    inset: -15px;
+    border-style: dashed;
+}
+
+.emblema {
+    position: relative;
+    z-index: 1;
+    width: min(245px, 70%);
+    max-height: 300px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 22px rgba(45, 169, 255, 0.3));
+    animation: flotar 5s ease-in-out infinite;
+}
+
+/* 8. Pie de la presentación */
+.pie {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 22px;
+    padding: 22px 6%;
+    border-top: 1px solid rgba(100, 190, 255, 0.18);
+}
+
+.progreso {
+    display: flex;
+    gap: 7px;
+}
+
+.progreso span {
+    width: 22px;
+    height: 3px;
+    background: #34485f;
+}
+
+.progreso span.activo {
+    width: 42px;
+    background: #36c5ff;
+    box-shadow: 0 0 10px #36c5ff;
+}
+
+.numero-diapositiva {
+    color: #86a6c4;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.flecha {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #36c5ff;
+    border-radius: 50%;
+    background: transparent;
+    color: #36c5ff;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.flecha:hover {
+    background: #36c5ff;
+    color: #04101e;
+    box-shadow: 0 0 20px rgba(54, 197, 255, 0.4);
+}
+
+/* 9. Animaciones */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flotar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+/* 10. Adaptación a pantallas pequeñas */
+@media (max-width: 760px) {
+    .encabezado {
+        padding: 22px 5%;
+    }
+
+    .encabezado p {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .portada {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 35px 6%;
+    }
+
+    .datos {
+        justify-content: center;
+        margin-top: 32px;
+        text-align: left;
+    }
+
+    .zona-emblema {
+        min-height: 260px;
+    }
+
+    .circulo-externo {
+        width: 230px;
+    }
+
+    .emblema {
+        width: 165px;
+        max-height: 220px;
+    }
+}
+
+/* SEGUNDA DIAPOSITIVA */
+
+.diapositiva {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    display: none;
+    animation: aparecer 0.7s ease both;
+}
+
+.diapositiva.activa {
+    display: flex;
+    flex-direction: column;
+}
+
+.contenido-secundario {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 60px 8%;
+}
+
+.contenido-secundario h1 {
+    margin-top: 18px;
+    font-size: clamp(38px, 5vw, 68px);
+}
+
+.descripcion {
+    max-width: 800px;
+    margin-top: 30px;
+    color: #c5d8ec;
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 1.7;
+}
+
+.linea-destacada {
+    width: 100px;
+    height: 4px;
+    margin-top: 35px;
+    background: #36c5ff;
+    box-shadow: 0 0 15px rgba(54, 197, 255, 0.5);
+}
+
+.texto-secundario {
+    margin-top: 22px;
+    color: #36c5ff;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+
+/* Control de visibilidad de las diapositivas */
+
+#diapositiva1,
+#diapositiva2 {
+    display: none;
+}
+
+#diapositiva1.activa {
+    display: flex;
+    flex-direction: column;
+}
+
+#diapositiva2.activa {
+    display: flex;
+    flex-direction: column;
+}
+
+/* TERCERA DIAPOSITIVA: COBERTURA TERRITORIAL */
+
+.zonas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 35px;
+}
+
+.zona-card {
+    padding: 24px 18px;
+    background: rgba(18, 45, 72, 0.75);
+    border: 1px solid rgba(54, 197, 255, 0.25);
+    border-radius: 14px;
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease;
+}
+
+.zona-card:hover {
+    transform: translateY(-5px);
+    border-color: #36c5ff;
+    background: rgba(25, 62, 94, 0.9);
+}
+
+.zona-card span {
+    display: block;
+    color: #c5d8ec;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.zona-card strong {
+    display: block;
+    margin-top: 18px;
+    color: #36c5ff;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1;
+}
+
+.zona-card p {
+    margin-top: 10px;
+    color: #9bb4ce;
+    font-size: 14px;
+}
+
+.total-barrios {
+    margin-top: 28px;
+    color: #36c5ff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* ADAPTACIÓN A PANTALLAS PEQUEÑAS */
+
+@media (max-width: 760px) {
+    .zonas-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 24px;
+    }
+
+    .zona-card {
+        padding: 18px 14px;
+    }
+
+    .contenido-secundario {
+        padding: 30px 6%;
+    }
+
+    .total-barrios {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+}
+
+
+/* GIRO 3D DE LOS NUMEROS */
+#diapositiva3.activa .zona-card strong {
+    display: block;
+    transform-style: preserve-3d;
+    backface-visibility: visible;
+    animation: giroNumero 1.5s ease-in-out both;
+}
+
+
+@keyframes giroNumero {
+    0% {
+        opacity: 0;
+        transform: perspective(300px) rotateX(0deg) scale(0.6);
+    }
+
+    20% {
+        opacity: 1;
+        transform: perspective(300px) rotateX(360deg) scale(1.15);
+    }
+
+    40% {
+        transform: perspective(300px) rotateX(720deg) scale(0.9);
+    }
+
+    60% {
+        transform: perspective(300px) rotateX(1080deg) scale(1.1);
+    }
+
+    80% {
+        transform: perspective(300px) rotateX(1260deg) scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: perspective(300px) rotateX(2880deg) scale(1);
+    }
+}
+
+/* DIAPOSITIVA 4 - FUENTES DE INFORMACION */
+
+.fuentes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.fuente-card {
+    position: relative;
+    padding: 35px;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        rgba(18, 45, 72, 0.95),
+        rgba(12, 29, 49, 0.9)
+    );
+    border: 1px solid rgba(54, 197, 255, 0.3);
+    border-radius: 16px;
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.fuente-card:hover {
+    transform: translateY(-6px);
+    border-color: #36c5ff;
+    box-shadow: 0 10px 35px rgba(54, 197, 255, 0.12);
+}
+
+.fuente-etiqueta {
+    color: #36c5ff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.fuente-card h2 {
+    margin-top: 22px;
+    color: #ffffff;
+    font-size: clamp(30px, 4vw, 46px);
+    letter-spacing: 2px;
+}
+
+.fuente-card p {
+    margin-top: 14px;
+    color: #c5d8ec;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+    .fuentes-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 25px;
+    }
+
+    .fuente-card {
+        padding: 24px;
+    }
+}
+
+/* DIAPOSITIVA 5 - METODOLOGIA DE ANALISIS */
+
+.metodologia-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.metodologia-etapa {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 18px 24px;
+    background: linear-gradient(
+        100deg,
+        rgba(18, 45, 72, 0.95),
+        rgba(12, 29, 49, 0.75)
+    );
+    border: 1px solid rgba(54, 197, 255, 0.22);
+    border-radius: 14px;
+    transition: border-color 0.3s ease,
+                background 0.3s ease,
+                transform 0.3s ease;
+}
+
+.metodologia-etapa:hover {
+    border-color: #36c5ff;
+    background: rgba(25, 62, 94, 0.85);
+    transform: translateX(6px);
+}
+
+.etapa-numero {
+    color: #36c5ff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.etapa-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    color: #36c5ff;
+    font-size: 14px;
+    font-weight: 700;
+    background: rgba(54, 197, 255, 0.08);
+    border: 1px solid rgba(54, 197, 255, 0.35);
+    border-radius: 12px;
+}
+
+.etapa-texto h2 {
+    color: #ffffff;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.etapa-texto p {
+    margin-top: 6px;
+    color: #c5d8ec;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+    .metodologia-lista {
+        gap: 10px;
+        margin-top: 22px;
+    }
+
+    .metodologia-etapa {
+        gap: 12px;
+        padding: 15px 12px;
+    }
+
+    .etapa-icono {
+        width: 40px;
+        height: 40px;
+    }
+
+    .etapa-texto h2 {
+        font-size: 14px;
+    }
+
+    .etapa-texto p {
+        font-size: 12px;
+    }
+}
+
+/* ANIMACION PROGRESIVA DE LA METODOLOGIA */
+
+#diapositiva5 .metodologia-etapa {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(25px);
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease,
+        visibility 0.5s ease;
+}
+
+#diapositiva5 .metodologia-etapa.etapa-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Respetar la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    #diapositiva5 .metodologia-etapa {
+        transition: none;
+    }
+}
+
+/* DIAPOSITIVA 6 - QUE ANALIZAMOS */
+
+.analisis-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 35px;
+}
+
+.analisis-card {
+    min-height: 180px;
+    padding: 25px;
+    background: linear-gradient(
+        135deg,
+        rgba(18, 45, 72, 0.95),
+        rgba(12, 29, 49, 0.9)
+    );
+    border: 1px solid rgba(54, 197, 255, 0.25);
+    border-radius: 16px;
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.analisis-card:hover {
+    transform: translateY(-5px);
+    border-color: #36c5ff;
+    box-shadow: 0 10px 35px rgba(54, 197, 255, 0.12);
+}
+
+.analisis-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    margin-bottom: 18px;
+    color: #36c5ff;
+    font-size: 14px;
+    font-weight: 700;
+    background: rgba(54, 197, 255, 0.08);
+    border: 1px solid rgba(54, 197, 255, 0.35);
+    border-radius: 12px;
+}
+
+.analisis-card h2 {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+.analisis-card p {
+    margin-top: 10px;
+    color: #c5d8ec;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+    .analisis-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-top: 25px;
+    }
+
+    .analisis-card {
+        padding: 22px;
+        min-height: auto;
+    }
+}
+
+/* Escudo de la diapositiva final */
+.cierre-escudo {
+    width: 150px;
+    max-width: 30%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 25px;
+}
+
+
+
+/* Cierre institucional: diapositiva 7 */
+#diapositiva7 .portada-contenido {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+
+    width: 82%;
+    max-width: 1050px;
+    min-height: 380px;
+    margin: 55px auto 0;
+    padding: 40px 50px;
+
+    border: 1px solid rgba(91, 190, 255, 0.65);
+    border-radius: 12px;
+    box-sizing: border-box;
+
+    position: relative;
+    background: rgba(255, 255, 255, 0.025);
+    box-shadow: 0 0 25px rgba(35, 145, 220, 0.08);
+}
+
+/* Línea decorativa superior */
+#diapositiva7 .portada-contenido::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 12%;
+    width: 76%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #4db8ff,
+        #a6e3ff,
+        #4db8ff,
+        transparent
+    );
+}
+
+/* Texto del cierre */
+#diapositiva7 .portada-texto {
+    flex: 1 1 60%;
+    text-align: left;
+}
+
+#diapositiva7 .portada-texto h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 22px;
+    letter-spacing: 2px;
+}
+
+#diapositiva7 .portada-texto p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    opacity: 0.85;
+}
+
+/* Escudo institucional */
+#diapositiva7 .portada-imagen {
+    flex: 0 0 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#diapositiva7 .portada-imagen img {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    max-height: 250px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 700px) {
+    #diapositiva7 .portada-contenido {
+        width: 92%;
+        min-height: auto;
+        margin-top: 25px;
+        padding: 28px 20px;
+        gap: 15px;
+    }
+
+    #diapositiva7 .portada-imagen img {
+        max-width: 130px;
+        max-height: 170px;
+    }
+
+    #diapositiva7 .portada-texto h1 {
+        font-size: 1.7rem;
+    }
+
+    #diapositiva7 .portada-texto p {
+        font-size: 0.75rem;
+    }
+}
+
+/* Efecto animado del escudo en la diapositiva final */
+#diapositiva7 .portada-imagen {
+    position: relative;
+    isolation: isolate;
+}
+
+#diapositiva7 .circulos-fondo {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#diapositiva7 .circulos-fondo span {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 1px solid rgba(77, 184, 255, 0.65);
+    border-radius: 50%;
+    animation: circulosCierre 6s ease-out infinite;
+}
+
+#diapositiva7 .circulos-fondo span:nth-child(2) {
+    animation-delay: 2s;
+}
+
+#diapositiva7 .circulos-fondo span:nth-child(3) {
+    animation-delay: 4s;
+}
+
+#diapositiva7 .portada-imagen img {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes circulosCierre {
+    0% {
+        transform: scale(0.65);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+
